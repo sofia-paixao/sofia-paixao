@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Paixão — Head de Operações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --ink2: #3d3b38;
+    --ink3: #8a8680;
+    --paper: #f7f4ef;
+    --paper2: #ede9e2;
+    --accent: #b85c2c;
+    --accent2: #7a3d1e;
+    --rule: #d8d2c8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-family: var(--serif);
+    font-size: clamp(40px, 8vw, 64px);
+    line-height: 1.0;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .title {
+    font-family: var(--serif);
+    font-size: clamp(18px, 4vw, 24px);
+    font-style: italic;
+    color: var(--ink2);
+    margin-bottom: 28px;
+    line-height: 1.3;
+  }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink2);
+    max-width: 560px;
+  }
+
+  .lede strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 40px 0;
+  }
+
+  /* ── Section ── */
+  .section { margin: 48px 0; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── Numbers grid ── */
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .number-cell {
+    background: var(--paper);
+    padding: 24px 20px;
+  }
+
+  .number-value {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .number-value span {
+    font-size: 16px;
+    color: var(--accent);
+  }
+
+  .number-label {
+    font-size: 12px;
+    color: var(--ink3);
+    line-height: 1.4;
+  }
+
+  /* ── Problem block ── */
+  .problem-block {
+    background: var(--paper2);
+    border-left: 3px solid var(--accent);
+    padding: 28px 28px 28px 32px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .problem-block p {
+    font-size: 16px;
+    color: var(--ink2);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .problem-block p:last-child { margin-bottom: 0; }
+
+  .problem-block strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── What I do list ── */
+  .do-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .do-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 15px;
+    color: var(--ink2);
+    line-height: 1.55;
+  }
+
+  .do-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+
+  .do-list li strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── Not list ── */
+  .not-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .not-list li {
+    font-size: 13px;
+    color: var(--ink3);
+    padding: 6px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    background: var(--paper);
+    text-decoration: line-through;
+    text-decoration-color: var(--rule);
+  }
+
+  /* ── Tools ── */
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tool-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink2);
+    padding: 5px 12px;
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    background: var(--ink);
+    border-radius: 6px;
+    padding: 40px 36px;
+    margin-top: 56px;
+  }
+
+  .cta-block .eyebrow {
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .cta-heading {
+    font-family: var(--serif);
+    font-size: clamp(22px, 5vw, 30px);
+    color: var(--paper);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .cta-sub {
+    font-size: 14px;
+    color: #8a8680;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .cta-sub strong {
+    color: #c4bdb4;
+    font-weight: 400;
+  }
+
+  .cta-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cta-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #c4bdb4;
+  }
+
+  .cta-line a {
+    color: var(--paper);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(247,244,239,0.2);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .cta-line a:hover {
+    border-color: var(--paper);
+  }
+
+  .cta-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--ink3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    .page { padding: 0 18px 60px; }
+    .header { padding: 40px 0 32px; }
+    .numbers { grid-template-columns: 1fr 1fr; }
+    .numbers .number-cell:last-child { grid-column: 1 / -1; }
+    .cta-block { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <p class="eyebrow">Head de Operações · Infoprodutos & Mentorias High Ticket</p>
+    <h1 class="name">Sofia Paixão</h1>
+    <p class="title">Operações que escalam. Times que entregam.<br>Sem você microgerenciar cada detalhe.</p>
+    <p class="lede">
+      Estruturo e opero negócios digitais de ponta a ponta — do pipeline comercial ao DRE, do onboarding do time à QA de lançamento. 
+      <strong>Não sou consultora que diagnostica e vai embora.</strong> Sou a pessoa que fica e faz funcionar.
+    </p>
+  </header>
+
+  <!-- Numbers -->
+  <div class="section">
+    <p class="section-label">Resultados comprovados</p>
+    <div class="numbers">
+      <div class="number-cell">
+        <div class="number-value">R$93k<span>→</span><br>R$297k</div>
+        <div class="number-label">Faturamento/mês em 6 meses · Projeto Grego</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">R$2,7<span>M</span></div>
+        <div class="number-label">Acumulado em 8 meses · time de 15 pessoas</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">R$10<span>M+</span></div>
+        <div class="number-label">Faturamento total operado em projetos simultâneos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <div class="section">
+    <p class="section-label">O problema que resolvo</p>
+    <div class="problem-block">
+      <p>Sua operação ainda depende de você. Quando você para, ela para. O time executa, mas não decide. Os números chegam atrasados — ou não chegam. Cada lançamento é um esforço de guerra improvisado.</p>
+      <p><strong>Meu trabalho é mudar isso.</strong> Estruturo o que não existe, sistematizo o que está na cabeça de alguém e garanto que o time entregue com consistência — sem que você precise estar em cada reunião, mensagem ou decisão operacional.</p>
+    </div>
+  </div>
+
+  <!-- What I do -->
+  <div class="section">
+    <p class="section-label">O que faço no dia a dia</p>
+    <ul class="do-list">
+      <li><span><strong>Operação de lançamento e perpétuo</strong> — cronograma, QA, automações, grupos de suporte, aulas ao vivo, pós-produção. Do briefing ao fechamento de caixa.</span></li>
+      <li><span><strong>Pipeline comercial e CRM</strong> — monitoramento diário do funil, feedback para SDRs e closers, comissões, métricas de eficiência real (não só volume de ligações).</span></li>
+      <li><span><strong>Financeiro operacional</strong> — DRE mensal, conciliação de caixa (PIX + plataformas), parcelas em aberto, inadimplência. Sem depender da memória de ninguém.</span></li>
+      <li><span><strong>Times e recrutamento</strong> — onboarding estruturado, gestão de entrega, desligamentos, 60+ processos seletivos conduzidos em um ano.</span></li>
+      <li><span><strong>Contratos e risco jurídico</strong> — leitura e análise de cláusulas críticas no dia a dia. Formação em Direito (UFU) aplicada diretamente na operação, sem travar processos esperando parecer externo.</span></li>
+    </ul>
+  </div>
+
+  <!-- Modelos de funil -->
+  <div class="section">
+    <p class="section-label">Modelos que já operei</p>
+    <div class="tools-grid">
+      <span class="tool-tag">Lançamento PLF</span>
+      <span class="tool-tag">Perpétuo com SDR + Closer</span>
+      <span class="tool-tag">Social Selling</span>
+      <span class="tool-tag">Funil de SDR</span>
+      <span class="tool-tag">Comunidade via WhatsApp</span>
+      <span class="tool-tag">High Ticket R$8k–R$30k</span>
+    </div>
+  </div>
+
+  <!-- Ferramentas -->
+  <div class="section">
+    <p class="section-label">Ferramentas dominadas</p>
+    <div class="tools-grid">
+      <span class="tool-tag">Notion Avançado</span>
+      <span class="tool-tag">ClickUp</span>
+      <span class="tool-tag">Pipedrive</span>
+      <span class="tool-tag">Hubla</span>
+      <span class="tool-tag">Hotmart</span>
+      <span class="tool-tag">Greenn</span>
+      <span class="tool-tag">Asaas</span>
+      <span class="tool-tag">Z-API</span>
+      <span class="tool-tag">Typebot</span>
+      <span class="tool-tag">Looker Studio</span>
+      <span class="tool-tag">Figma</span>
+      <span class="tool-tag">Google Workspace</span>
+      <span class="tool-tag">Clicksign</span>
+      <span class="tool-tag">Calendly</span>
+      <span class="tool-tag">Make</span>
+    </div>
+  </div>
+
+  <!-- Not list -->
+  <div class="section">
+    <p class="section-label">O que não sou</p>
+    <ul class="not-list">
+      <li>Assistente executiva</li>
+      <li>Social media</li>
+      <li>Community manager</li>
+      <li>Copywriter</li>
+      <li>Consultora que entrega relatório e some</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p class="eyebrow">Como acionar</p>
+    <h2 class="cta-heading">Se faz sentido, me manda uma mensagem.</h2>
+    <p class="cta-sub">
+      Me conta três coisas: <strong>faturamento atual, tamanho do time e principal gargalo operacional.</strong><br>
+      Respondo em até 24h. Não precisa de call para começar.
+    </p>
+    <div class="cta-action">
+      <div class="cta-line">
+        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.045.034.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+        </svg>
+        Instagram: <a href="https://instagram.com/sofiapaixaoo_" target="_blank">@sofiapaixaoo_</a>
+      </div>
+      <div class="cta-line">
+        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn: <a href="https://linkedin.com/in/sofiapaixao" target="_blank">linkedin.com/in/sofiapaixao</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>Sofia Paixão · Head de Operações</span>
+    <span>Março 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
