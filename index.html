@@ -5,25 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sofia Paixão — Head de Operações</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --ink: #0f0e0d;
-    --ink2: #3d3b38;
-    --ink3: #8a8680;
-    --paper: #f7f4ef;
+    --ink:    #0f0e0d;
+    --ink2:   #3d3b38;
+    --ink3:   #8a8680;
+    --paper:  #f7f4ef;
     --paper2: #ede9e2;
     --accent: #b85c2c;
-    --accent2: #7a3d1e;
-    --rule: #d8d2c8;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
+    --rule:   #d8d2c8;
+    --serif:  'DM Serif Display', Georgia, serif;
+    --sans:   'DM Sans', system-ui, sans-serif;
   }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--paper);
     color: var(--ink);
@@ -33,440 +29,256 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
+  .page { max-width: 660px; margin: 0 auto; padding: 0 24px 80px; }
 
-  /* ── Layout ── */
-  .page {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-  }
-
-  /* ── Header ── */
-  .header {
-    padding: 56px 0 40px;
-    border-bottom: 1px solid var(--rule);
-  }
-
+  /* Header */
+  .header { padding: 52px 0 40px; border-bottom: 1px solid var(--rule); }
   .eyebrow {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
   }
-
   .name {
     font-family: var(--serif);
-    font-size: clamp(40px, 8vw, 64px);
-    line-height: 1.0;
-    color: var(--ink);
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
+    font-size: clamp(42px, 9vw, 64px);
+    line-height: 1.0; color: var(--ink);
+    margin-bottom: 6px; letter-spacing: -0.5px;
   }
-
-  .title {
+  .title-line {
     font-family: var(--serif);
-    font-size: clamp(18px, 4vw, 24px);
-    font-style: italic;
-    color: var(--ink2);
-    margin-bottom: 28px;
-    line-height: 1.3;
+    font-size: clamp(16px, 3.5vw, 21px);
+    font-style: italic; color: var(--ink2);
+    margin-bottom: 24px; line-height: 1.4;
   }
+  .lede { font-size: 16px; line-height: 1.8; color: var(--ink2); max-width: 540px; }
+  .lede strong { font-weight: 500; color: var(--ink); }
 
-  .lede {
-    font-size: 17px;
-    line-height: 1.75;
-    color: var(--ink2);
-    max-width: 560px;
-  }
-
-  .lede strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  /* ── Divider ── */
-  .divider {
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
-    margin: 40px 0;
-  }
-
-  /* ── Section ── */
-  .section { margin: 48px 0; }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  /* ── Numbers grid ── */
-  .numbers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .number-cell {
-    background: var(--paper);
-    padding: 24px 20px;
-  }
-
-  .number-value {
-    font-family: var(--serif);
-    font-size: 32px;
-    color: var(--ink);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .number-value span {
-    font-size: 16px;
-    color: var(--accent);
-  }
-
-  .number-label {
-    font-size: 12px;
-    color: var(--ink3);
-    line-height: 1.4;
-  }
-
-  /* ── Problem block ── */
-  .problem-block {
-    background: var(--paper2);
-    border-left: 3px solid var(--accent);
-    padding: 28px 28px 28px 32px;
-    border-radius: 0 4px 4px 0;
-  }
-
-  .problem-block p {
-    font-size: 16px;
-    color: var(--ink2);
-    line-height: 1.75;
-    margin-bottom: 14px;
-  }
-
-  .problem-block p:last-child { margin-bottom: 0; }
-
-  .problem-block strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  /* ── What I do list ── */
-  .do-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .do-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    font-size: 15px;
-    color: var(--ink2);
-    line-height: 1.55;
-  }
-
-  .do-list li::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    min-width: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    margin-top: 8px;
-  }
-
-  .do-list li strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  /* ── Not list ── */
-  .not-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .not-list li {
-    font-size: 13px;
-    color: var(--ink3);
-    padding: 6px 14px;
-    border: 1px solid var(--rule);
-    border-radius: 100px;
-    background: var(--paper);
-    text-decoration: line-through;
-    text-decoration-color: var(--rule);
-  }
-
-  /* ── Tools ── */
-  .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tool-tag {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink2);
-    padding: 5px 12px;
-    background: var(--paper2);
-    border: 1px solid var(--rule);
-    border-radius: 100px;
-    letter-spacing: 0.01em;
-  }
-
-  /* ── CTA ── */
-  .cta-block {
-    background: var(--ink);
-    border-radius: 6px;
-    padding: 40px 36px;
-    margin-top: 56px;
-  }
-
-  .cta-block .eyebrow {
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .cta-heading {
-    font-family: var(--serif);
-    font-size: clamp(22px, 5vw, 30px);
-    color: var(--paper);
-    line-height: 1.25;
-    margin-bottom: 12px;
-  }
-
-  .cta-sub {
-    font-size: 14px;
-    color: #8a8680;
-    line-height: 1.65;
-    margin-bottom: 28px;
-  }
-
-  .cta-sub strong {
-    color: #c4bdb4;
-    font-weight: 400;
-  }
-
-  .cta-action {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .cta-line {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: #c4bdb4;
-  }
-
-  .cta-line a {
-    color: var(--paper);
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(247,244,239,0.2);
-    padding-bottom: 1px;
-    transition: border-color 0.2s;
-  }
-
-  .cta-line a:hover {
-    border-color: var(--paper);
-  }
-
-  .cta-icon {
-    width: 18px;
-    height: 18px;
-    opacity: 0.5;
-    flex-shrink: 0;
-  }
-
-  /* ── Footer ── */
-  .footer {
-    margin-top: 60px;
-    padding-top: 24px;
+  /* Proof bar */
+  .proof-bar {
+    margin-top: 24px; padding-top: 18px;
     border-top: 1px solid var(--rule);
-    font-size: 12px;
-    color: var(--ink3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: gap;
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
   }
+  .proof-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink3); white-space: nowrap;
+  }
+  .proof-names { font-size: 14px; color: var(--ink2); }
+  .proof-names strong { font-weight: 500; color: var(--ink); }
 
-  /* ── Responsive ── */
-  @media (max-width: 500px) {
-    .page { padding: 0 18px 60px; }
-    .header { padding: 40px 0 32px; }
-    .numbers { grid-template-columns: 1fr 1fr; }
-    .numbers .number-cell:last-child { grid-column: 1 / -1; }
-    .cta-block { padding: 28px 22px; }
+  /* Section */
+  .section { margin: 48px 0; }
+  .section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  /* Numbers */
+  .numbers {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+  }
+  .number-cell { background: var(--paper); padding: 20px 18px; }
+  .number-cell.featured {
+    grid-column: 1 / -1; background: var(--ink);
+    display: flex; align-items: center; gap: 24px; padding: 26px;
+  }
+  .number-cell.featured .nv { color: var(--paper); font-family: var(--serif); font-size: 48px; line-height: 1; white-space: nowrap; flex-shrink: 0; }
+  .number-cell.featured .nv span { color: #d4855a; }
+  .number-cell.featured .nl { color: #8a8680; font-size: 13px; line-height: 1.55; }
+  .number-cell.featured .nl strong { color: #c4bdb4; font-weight: 400; display: block; font-size: 10px; margin-bottom: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nv { font-family: var(--serif); font-size: 30px; color: var(--ink); line-height: 1.1; margin-bottom: 7px; }
+  .nv span { color: var(--accent); }
+  .nl { font-size: 12px; color: var(--ink3); line-height: 1.45; }
+
+  /* Experiência */
+  .timeline { display: flex; flex-direction: column; }
+  .timeline-item {
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 20px; padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline-item:first-child { padding-top: 0; }
+  .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .tp { font-size: 12px; color: var(--ink3); line-height: 1.5; padding-top: 2px; }
+  .tp strong { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .tc h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .tc .emp { font-size: 12px; color: var(--ink3); margin-bottom: 8px; }
+  .tc p { font-size: 13px; color: var(--ink2); line-height: 1.65; }
+
+  /* Tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 500; color: var(--ink2); padding: 4px 11px; background: var(--paper2); border: 1px solid var(--rule); border-radius: 100px; }
+
+  /* CTA — candidatura */
+  .cta-block { background: var(--ink); border-radius: 6px; padding: 36px 32px; margin-top: 52px; }
+  .cta-block .eyebrow { color: var(--accent); margin-bottom: 14px; }
+  .cta-heading { font-family: var(--serif); font-size: clamp(20px, 5vw, 28px); color: var(--paper); line-height: 1.2; margin-bottom: 12px; }
+  .cta-body { font-size: 14px; color: #8a8680; line-height: 1.75; margin-bottom: 24px; }
+  .cta-body strong { color: #c4bdb4; font-weight: 400; }
+  .cta-channels { display: flex; flex-direction: column; gap: 11px; }
+  .cta-ch { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #8a8680; }
+  .cta-ch a { color: var(--paper); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(247,244,239,0.15); padding-bottom: 1px; }
+  .cta-ch a:hover { border-color: var(--paper); }
+  .chi { width: 16px; height: 16px; opacity: 0.4; flex-shrink: 0; }
+  .cta-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 20px 0; }
+  .cta-note { font-size: 12px; color: #5a5754; line-height: 1.65; }
+  .cta-note strong { color: #8a8680; font-weight: 400; }
+
+  /* Footer */
+  .footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 11px; color: var(--ink3); display: flex; justify-content: space-between; }
+
+  @media (max-width: 480px) {
+    .page { padding: 0 16px 60px; }
+    .header { padding: 36px 0 28px; }
+    .number-cell.featured { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .number-cell.featured .nv { font-size: 38px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    .tp { padding-top: 0; }
+    .cta-block { padding: 26px 18px; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Header -->
   <header class="header">
-    <p class="eyebrow">Head de Operações · Infoprodutos & Mentorias High Ticket</p>
+    <p class="eyebrow">Head de Operações · BizOps & RevOps · Disponível para posição interna</p>
     <h1 class="name">Sofia Paixão</h1>
-    <p class="title">Operações que escalam. Times que entregam.<br>Sem você microgerenciar cada detalhe.</p>
+    <p class="title-line">3 anos no digital. R$10M operados em 12 meses.<br>Garanto que a máquina funcione enquanto o CEO cresce.</p>
     <p class="lede">
-      Estruturo e opero negócios digitais de ponta a ponta — do pipeline comercial ao DRE, do onboarding do time à QA de lançamento. 
-      <strong>Não sou consultora que diagnostica e vai embora.</strong> Sou a pessoa que fica e faz funcionar.
+      Estruturo processos, gerencio times e mantenho pipeline comercial, financeiro e operação funcionando com consistência.
+      <strong>Busco posição interna — CLT ou PJ fixo —</strong> em empresa digital com operação real para escalar.
     </p>
+    <div class="proof-bar">
+      <span class="proof-label">3 anos no digital · referências:</span>
+      <span class="proof-names">
+        <strong>Fernando Brasão</strong> (@fernandobrasao) · <strong>Bianca Câmara</strong> (@biancacamaraa), CEO Action Experts
+      </span>
+    </div>
   </header>
 
-  <!-- Numbers -->
   <div class="section">
-    <p class="section-label">Resultados comprovados</p>
+    <p class="section-label">Histórico de resultados</p>
     <div class="numbers">
-      <div class="number-cell">
-        <div class="number-value">R$93k<span>→</span><br>R$297k</div>
-        <div class="number-label">Faturamento/mês em 6 meses · Projeto Grego</div>
+      <div class="number-cell featured">
+        <div class="nv">R$2,7<span>M</span></div>
+        <div class="nl">
+          <strong>Projeto em PLR · 8 meses</strong>
+          Time de 15 pessoas, budget de tráfego R$45k–R$83k/mês, ROAS médio 5x. Pico de R$498k em um único mês.
+        </div>
       </div>
       <div class="number-cell">
-        <div class="number-value">R$2,7<span>M</span></div>
-        <div class="number-label">Acumulado em 8 meses · time de 15 pessoas</div>
+        <div class="nv">+220<span>%</span></div>
+        <div class="nl">Projeto em Cash on Delivery: Crescimento de R$93k → R$297k/mês em 6 meses.</div>
       </div>
       <div class="number-cell">
-        <div class="number-value">R$10<span>M+</span></div>
-        <div class="number-label">Faturamento total operado em projetos simultâneos</div>
+        <div class="nv">R$10<span>M+</span></div>
+        <div class="nl">Faturamento total operado em +7 projetos nos últimos 12 meses.</div>
+      </div>
+    </div> 
+  </div>
+
+  <div class="section">
+           <div class="nl">Nome dos experts mantidos em sigilo por segurança comercial.</div>
+ </div>
+ 
+  <div class="section">
+    <p class="section-label">Experiência</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tp"><strong>2025</strong>Action Experts</div>
+        <div class="tc">
+          <h3>Head de Operações</h3>
+          <p class="emp">CEO: Bianca Câmara · R$10M+ faturados</p>
+          <p>Operação de todos os projetos simultaneamente — lançamento, perpétuo, times de SDR e closer, DRE, cash collect, inadimplência, recrutamento. Mais de 60 processos seletivos em um ano.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tp"><strong>2023–2024</strong>Grupo Bebold</div>
+        <div class="tc">
+          <h3>Gerente Operacional</h3>
+          <p class="emp">Expert: Fernando Brasão</p>
+          <p>Operação digital completa. Times multifuncionais de tráfego, copy, design, CRM e vendas — alinhamento de entregas entre áreas em uma das maiores operações de conteúdo do ecossistema digital brasileiro.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tp"><strong>2023–2024</strong>Alqia / HSI</div>
+        <div class="tc">
+          <h3>Analista de Operações de Marketing</h3>
+          <p class="emp">Rede com 160+ lojistas · Shopping Uberaba</p>
+          <p>Gestão de CRM, interface com agência, campanhas multicanal em ambiente corporativo de grande escala.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Problem -->
   <div class="section">
-    <p class="section-label">O problema que resolvo</p>
-    <div class="problem-block">
-      <p>Sua operação ainda depende de você. Quando você para, ela para. O time executa, mas não decide. Os números chegam atrasados — ou não chegam. Cada lançamento é um esforço de guerra improvisado.</p>
-      <p><strong>Meu trabalho é mudar isso.</strong> Estruturo o que não existe, sistematizo o que está na cabeça de alguém e garanto que o time entregue com consistência — sem que você precise estar em cada reunião, mensagem ou decisão operacional.</p>
+    <p class="section-label">O que faço bem</p>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="width:5px;height:5px;min-width:5px;background:var(--accent);border-radius:50%;margin-top:9px;"></div>
+        <p style="font-size:15px;color:var(--ink2);line-height:1.65;"><strong style="font-weight:500;color:var(--ink);">Processos e operação</strong> — estruturo do zero o que não existe, sistematizo o que está na cabeça de alguém, crio rotinas que o time consegue replicar sem supervisão.</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="width:5px;height:5px;min-width:5px;background:var(--accent);border-radius:50%;margin-top:9px;"></div>
+        <p style="font-size:15px;color:var(--ink2);line-height:1.65;"><strong style="font-weight:500;color:var(--ink);">Pipeline comercial e CRM</strong> — monitoramento diário, métricas reais de SDRs e closers (não só volume), comissões, relatório de performance antes de o CEO precisar perguntar.</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="width:5px;height:5px;min-width:5px;background:var(--accent);border-radius:50%;margin-top:9px;"></div>
+        <p style="font-size:15px;color:var(--ink2);line-height:1.65;"><strong style="font-weight:500;color:var(--ink);">Financeiro operacional</strong> — DRE mensal, conciliação de caixa, parcelas em aberto, inadimplência. Sem depender da memória de ninguém.</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="width:5px;height:5px;min-width:5px;background:var(--accent);border-radius:50%;margin-top:9px;"></div>
+        <p style="font-size:15px;color:var(--ink2);line-height:1.65;"><strong style="font-weight:500;color:var(--ink);">Times</strong> — onboarding estruturado, gestão de entrega, feedback direto, desligamentos. Faço o time funcionar sem que o CEO precise entrar em cada conversa.</p>
+      </div>
     </div>
   </div>
 
-  <!-- What I do -->
   <div class="section">
-    <p class="section-label">O que faço no dia a dia</p>
-    <ul class="do-list">
-      <li><span><strong>Operação de lançamento e perpétuo</strong> — cronograma, QA, automações, grupos de suporte, aulas ao vivo, pós-produção. Do briefing ao fechamento de caixa.</span></li>
-      <li><span><strong>Pipeline comercial e CRM</strong> — monitoramento diário do funil, feedback para SDRs e closers, comissões, métricas de eficiência real (não só volume de ligações).</span></li>
-      <li><span><strong>Financeiro operacional</strong> — DRE mensal, conciliação de caixa (PIX + plataformas), parcelas em aberto, inadimplência. Sem depender da memória de ninguém.</span></li>
-      <li><span><strong>Times e recrutamento</strong> — onboarding estruturado, gestão de entrega, desligamentos, 60+ processos seletivos conduzidos em um ano.</span></li>
-      <li><span><strong>Contratos e risco jurídico</strong> — leitura e análise de cláusulas críticas no dia a dia. Formação em Direito (UFU) aplicada diretamente na operação, sem travar processos esperando parecer externo.</span></li>
-    </ul>
-  </div>
-
-  <!-- Modelos de funil -->
-  <div class="section">
-    <p class="section-label">Modelos que já operei</p>
-    <div class="tools-grid">
-      <span class="tool-tag">Lançamento PLF</span>
-      <span class="tool-tag">Perpétuo com SDR + Closer</span>
-      <span class="tool-tag">Social Selling</span>
-      <span class="tool-tag">Funil de SDR</span>
-      <span class="tool-tag">Comunidade via WhatsApp</span>
-      <span class="tool-tag">High Ticket R$8k–R$30k</span>
+    <p class="section-label">Ferramentas</p>
+    <div class="tags">
+      <span class="tag">Notion</span><span class="tag">ClickUp</span><span class="tag">Pipedrive</span>
+      <span class="tag">Hubla</span><span class="tag">Hotmart</span><span class="tag">Greenn</span>
+      <span class="tag">Asaas</span><span class="tag">Z-API</span><span class="tag">Typebot</span>
+      <span class="tag">Looker Studio</span><span class="tag">Figma</span><span class="tag">Make</span>
+      <span class="tag">Google Workspace</span><span class="tag">Clicksign</span>
     </div>
   </div>
 
-  <!-- Ferramentas -->
-  <div class="section">
-    <p class="section-label">Ferramentas dominadas</p>
-    <div class="tools-grid">
-      <span class="tool-tag">Notion Avançado</span>
-      <span class="tool-tag">ClickUp</span>
-      <span class="tool-tag">Pipedrive</span>
-      <span class="tool-tag">Hubla</span>
-      <span class="tool-tag">Hotmart</span>
-      <span class="tool-tag">Greenn</span>
-      <span class="tool-tag">Asaas</span>
-      <span class="tool-tag">Z-API</span>
-      <span class="tool-tag">Typebot</span>
-      <span class="tool-tag">Looker Studio</span>
-      <span class="tool-tag">Figma</span>
-      <span class="tool-tag">Google Workspace</span>
-      <span class="tool-tag">Clicksign</span>
-      <span class="tool-tag">Calendly</span>
-      <span class="tool-tag">Make</span>
-    </div>
-  </div>
-
-  <!-- Not list -->
-  <div class="section">
-    <p class="section-label">O que não sou</p>
-    <ul class="not-list">
-      <li>Assistente executiva</li>
-      <li>Social media</li>
-      <li>Community manager</li>
-      <li>Copywriter</li>
-      <li>Consultora que entrega relatório e some</li>
-    </ul>
-  </div>
-
-  <!-- CTA -->
   <div class="cta-block">
-    <p class="eyebrow">Como acionar</p>
-    <h2 class="cta-heading">Se faz sentido, me manda uma mensagem.</h2>
-    <p class="cta-sub">
-      Me conta três coisas: <strong>faturamento atual, tamanho do time e principal gargalo operacional.</strong><br>
-      Respondo em até 24h. Não precisa de call para começar.
+    <p class="eyebrow">Contato</p>
+    <h2 class="cta-heading">Procuro posição interna de Head de Ops.</h2>
+    <p class="cta-body">
+      CLT ou PJ fixo. Remoto ou híbrido.<br>
+      <strong>Se sua operação está crescendo e precisa de alguém para estruturar e manter funcionando — faz sentido conversar.</strong>
     </p>
-    <div class="cta-action">
-      <div class="cta-line">
-        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">                   
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>                                                                                                       
-    <circle cx="12" cy="12" r="4"/>                                                                                                                                
-    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>                                                                                         
+    <div class="cta-channels">
+      <div class="cta-ch">
+        <svg class="chi" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
-        Instagram: <a href="https://instagram.com/sofiapaixao_" target="_blank">@sofiapaixao_</a>
+        WhatsApp: <a href="https://wa.me/5534991868745" target="_blank">+55 34 99186-8745</a>
       </div>
-      <div class="cta-line">
-        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+      <div class="cta-ch">
+        <svg class="chi" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
         LinkedIn: <a href="https://linkedin.com/in/sofiapaixaoc" target="_blank">linkedin.com/in/sofiapaixaoc</a>
       </div>
+      <div class="cta-ch">
+        <svg class="chi" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        E-mail: <a href="/cdn-cgi/l/email-protection#5e2d3138373f2e3f37263f313d1e39333f3732703d3133" target="_blank"><span class="__cf_email__" data-cfemail="cab9a5aca3abbaaba3b2aba5a98aada7aba3a6e4a9a5a7">[email&#160;protected]</span></a>
+      </div>
     </div>
+    <div class="cta-divider"></div>
+    <p class="cta-note">
+      <strong>Sobre o modelo de contratação:</strong> aberta a CLT ou PJ fixo de longo prazo. Remoto com disponibilidade para presencial eventual quando necessário.
+    </p>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <span>Sofia Paixão · Head de Operações</span>
-    <span>Março 2026</span>
-  </footer>
-
-</div>
-</body>
-</html>
+  <f
